@@ -18,12 +18,11 @@
     <body>
         <div id="app" class="container">
             <select v-model="selectedGenre">
-                <option>Tutti i generi</option>
+                <option selected value>Tutti i generi</option>
                 <option v-for="genere in generi">{{genere}}</option>
             </select>
-            <button @click="sort()">Sort by Date</button>
             <div class="row">
-                <div v-for="album in filteredGenresArray()" class="album">
+                <div v-for="album in orderedMusic()" class="album">
                     <h2>{{album.title}}</h2>
                     <div class="poster">
                         <img :src="album.poster">

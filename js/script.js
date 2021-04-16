@@ -14,23 +14,38 @@ function generateBox() {
             array: [],
             generi:[],
             selectedGenre: "",
-            anno: ""
         },
         methods:{
+
+            selected: function () {
+
+            },
+
+            //filtra l'array in base a genere
             filteredGenresArray: function () {
-                if (this.selectedGenre == "Tutti i generi") {
-                    return this.array;
-                }else {
                     return this.array.filter(album => {
                         return album.genre.includes(this.selectedGenre);
                     });
-                }
             },
-            sort: function () {
-                console.log('sort');
-            }
+
+            //ordina l'array in base all'anno di uscita del pezzo
+            orderedMusic: function () {
+               const order = this.filteredGenresArray().sort(
+                    function (a, b) {
+                       if (a.year < b.year) {
+                           return -1;
+                       } else if (a.year > b.year) {
+                           return 1;
+                       }
+                       return 0;
+                   }
+               );
+               return order;
+           }
 
         },
+
+        //prelevo l'api, lo pusho in un data e creo le option per il select
         mounted(){
             axios.get('https://flynn.boolean.careers/exercises/api/array/music')
             .then(data =>{
@@ -38,6 +53,7 @@ function generateBox() {
                 this.array = array
                 for (let i = 0; i < array.length; i++) {
                     const album = array[i];
+
                     if (!this.generi.includes(album.genre)) {
                         this.generi.push(album.genre)
                     }
