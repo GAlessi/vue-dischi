@@ -17,10 +17,6 @@ function generateBox() {
         },
         methods:{
 
-            selected: function () {
-
-            },
-
             //filtra l'array in base a genere
             filteredGenresArray: function () {
                     return this.array.filter(album => {
