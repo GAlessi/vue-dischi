@@ -25,8 +25,27 @@ function generateBox() {
             },
 
             //ordina l'array in base all'anno di uscita del pezzo
+           //  orderedMusic: function () {
+           //     const ordered = this.filteredGenresArray().sort(
+           //          function (a, b) {
+           //             if (a.year < b.year) {
+           //                 return -1;
+           //             } else if (a.year > b.year) {
+           //                 return 1;
+           //             }
+           //             return 0;
+           //         }
+           //     );
+           //     return ordered;
+           // }
+
+        },
+
+        computed: {
+            //ordina l'array in base all'anno di uscita del pezzo
             orderedMusic: function () {
-               const order = this.filteredGenresArray().sort(
+                console.log('hello');
+               const ordered = this.filteredGenresArray().sort(
                     function (a, b) {
                        if (a.year < b.year) {
                            return -1;
@@ -36,9 +55,8 @@ function generateBox() {
                        return 0;
                    }
                );
-               return order;
+               return ordered;
            }
-
         },
 
         //prelevo l'api, lo pusho in un data e creo le option per il select

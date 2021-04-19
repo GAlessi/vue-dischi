@@ -22,7 +22,7 @@
                 <option v-for="genere in generi">{{genere}}</option>
             </select>
             <div class="row">
-                <div v-for="album in orderedMusic()" class="album">
+                <div v-for="album in orderedMusic" class="album">
                     <h2>{{album.title}}</h2>
                     <div class="poster">
                         <img :src="album.poster">
